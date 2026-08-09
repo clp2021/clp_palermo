@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Logistica</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="logo.jpg">
+    <style>
+        :root { 
+            --bg: #000000; 
+            --card: #1c1c1e; 
+            --accent: #0a84ff; 
+            --text: #ffffff; 
+            --border: #2c2c2e;
+            --text-muted: #8e8e93;
+            --hover-bg: #2c2c2e;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 15px; 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        .container { 
+            width: 100%; 
+            max-width: 500px; 
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 10px; 
+            margin-bottom: 10px; 
+        }
+
+        .section-title { 
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+            margin: 15px 0 5px 5px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+
+        .grid .section-title {
+            grid-column: span 2;
+        }
+
+        .btn { 
+            background: var(--card); 
+            padding: 16px 10px; 
+            border-radius: 15px; 
+            text-decoration: none; 
+            color: var(--text); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            border: 1px solid var(--border); 
+            min-height: 65px; 
+            transition: transform 0.1s ease, background-color 0.15s ease;
+            user-select: none;
+        }
+
+        .btn:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .btn b { 
+            display: block; 
+            margin-bottom: 4px; 
+            font-size: 1rem; 
+        }
+
+        .btn span { 
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+        }
+
+        details { 
+            background: var(--card); 
+            border-radius: 15px; 
+            border: 1px solid var(--border); 
+            margin-top: 10px; 
+            overflow: hidden;
+        }
+
+        summary { 
+            padding: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            list-style: none; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after { 
+            content: '▼'; 
+            color: var(--accent); 
+            font-size: 0.8rem; 
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content { 
+            display: flex; 
+            flex-direction: column; 
+            padding: 5px 10px 15px 10px; 
+            gap: 8px; 
+        }
+
+        .ship-link { 
+            padding: 14px; 
+            background: #2c2c2e; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            color: var(--text); 
+            font-size: 0.95rem; 
+            border: 1px solid #3a3a3c; 
+            transition: background-color 0.15s ease, transform 0.1s ease;
+            user-select: none;
+        }
+
+        .ship-link:hover {
+            background: #3a3a3c;
+        }
+
+        .btn:active, .ship-link:active { 
+            transform: scale(0.98); 
+            background: #2c2c2e; 
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <div class="grid">
+        <div class="section-title">Strumenti</div>
+        <a href="https://calcolatore-clp.netlify.app" target="_blank" rel="noopener noreferrer" class="btn"><b>🧮 Personale</b><span>CLP</span></a>
+        <a href="https://comforting-palmier-b274d2.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn"><b>📦 Pezzi</b><span>calcolatore</span></a>
+        <a href="https://www.portitalia.eu/CLP/Ruolino/Ruolino.htm" target="_blank" rel="noopener noreferrer" class="btn"><b>📋 Ruolino</b><span>CLP</span></a>
+        <a href="https://rateoclp.netlify.app" target="_blank" rel="noopener noreferrer" class="btn"><b>🌴 Ferie</b><span>Rateo</span></a>
+        
+        <div class="section-title">Porti</div>
+        <a href="https://www.mnsw.gov.it/arrivals_departures/tables?port=ITPMO" target="_blank" rel="noopener noreferrer" class="btn"><b>⚓ Palermo</b><span>Arrivi</span></a>
+        <a href="https://www.mnsw.gov.it/arrivals_departures/tables?port=ITTRI" target="_blank" rel="noopener noreferrer" class="btn"><b>⚓ Termini</b><span>Arrivi</span></a>
+    </div>
+
+    <div class="section-title">Compagnie</div>
+    <details>
+        <summary>🚢 Grimaldi Lines</summary>
+        <div class="dropdown-content">
+            <a href="https://www.vesselfinder.com/it/vessels/details/9198939" target="_blank" rel="noopener noreferrer" class="ship-link">Europa Palace</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9465538" target="_blank" rel="noopener noreferrer" class="ship-link">Eurocargo Palermo</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9458951" target="_blank" rel="noopener noreferrer" class="ship-link">Eurocargo Genova</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9465540" target="_blank" rel="noopener noreferrer" class="ship-link">Eurocargo Alexandria</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9465552" target="_blank" rel="noopener noreferrer" class="ship-link">Eurocargo Venezia</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9208071" target="_blank" rel="noopener noreferrer" class="ship-link">Zeus</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9227429" target="_blank" rel="noopener noreferrer" class="ship-link">Ausonia</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9261554" target="_blank" rel="noopener noreferrer" class="ship-link">Catania</a>
+        </div>
+    </details>
+
+    <details>
+        <summary>🚢 GNV</summary>
+        <div class="dropdown-content">
+            <a href="https://www.vesselfinder.com/it/?imo=9948592" target="_blank" rel="noopener noreferrer" class="ship-link">Polaris</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9948607" target="_blank" rel="noopener noreferrer" class="ship-link">Orion</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9980057" target="_blank" rel="noopener noreferrer" class="ship-link">Virgo</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9305269" target="_blank" rel="noopener noreferrer" class="ship-link">Auriga</a>
+            <a href="https://www.vesselfinder.com/it/?imo=8416308" target="_blank" rel="noopener noreferrer" class="ship-link">Blu</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9293404" target="_blank" rel="noopener noreferrer" class="ship-link">Sirio</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9198927" target="_blank" rel="noopener noreferrer" class="ship-link">Spirit</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9015747" target="_blank" rel="noopener noreferrer" class="ship-link">Splendid</a>
+            <a href="https://www.vesselfinder.com/it/vessels/details/9435454" target="_blank" rel="noopener noreferrer" class="ship-link">Sealand</a>
+            <a href="https://www.vesselfinder.com/it/vessels/details/9458523" target="_blank" rel="noopener noreferrer" class="ship-link">Forza</a>
+            <a href="https://www.vesselfinder.com/it/vessels/details/9350707" target="_blank" rel="noopener noreferrer" class="ship-link">Tenacia</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9186429" target="_blank" rel="noopener noreferrer" class="ship-link">Elisabeth Russ</a>
+            <a href="https://www.vesselfinder.com/it/?imo=9197533" target="_blank" rel="noopener noreferrer" class="ship-link">Caroline Russ</a>
+            <a href="https://www.vesselfinder.com/it/?imo=8420842" target="_blank" rel="noopener noreferrer" class="ship-link">Golden Carrier</a>
+        </div>
+    </details>
+</main>
+</body>
+</html>
