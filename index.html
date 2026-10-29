@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>CLP Palermo</title>
     <link href="logo.jpg" rel="icon" type="image/jpeg">
     <link rel="apple-touch-icon" href="logo.jpg">
@@ -10,10 +10,16 @@
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
+            --card-hover: #282828;
             --accent-color: #0088cc;
             --text-color: #ffffff;
             --text-secondary: #aaaaaa;
-            --border-color: #333333;
+            --border-color: #2c2c2c;
+            --radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -21,7 +27,9 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 15px;
+            padding: 16px;
+            padding-top: max(16px, env(safe-area-inset-top));
+            padding-bottom: max(16px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
         }
@@ -31,17 +39,18 @@
             max-width: 500px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--text-secondary);
-            margin-top: 10px;
-            margin-bottom: 5px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-top: 8px;
+            margin-bottom: -4px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            padding-left: 2px;
         }
 
         .grid {
@@ -55,25 +64,29 @@
             color: var(--text-color);
             text-decoration: none;
             padding: 12px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            transition: background-color 0.2s, border-color 0.2s;
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
         }
 
         a:hover, a:active {
-            background-color: #2a2a2a;
+            background-color: var(--card-hover);
             border-color: var(--accent-color);
         }
 
+        a:active {
+            transform: scale(0.98);
+        }
+
         a b {
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 2px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
         a span {
@@ -81,29 +94,37 @@
             color: var(--text-secondary);
         }
 
-        .vf-icon {
+        .svg-icon {
             width: 16px;
             height: 16px;
-            border-radius: 2px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+            display: inline-block;
             vertical-align: middle;
         }
 
         details {
             background-color: var(--card-bg);
-            border-radius: 8px;
+            border-radius: var(--radius);
             border: 1px solid var(--border-color);
             overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        details[open] {
+            border-color: #383838;
         }
 
         summary {
-            padding: 12px;
-            font-weight: bold;
+            padding: 14px 12px;
+            font-weight: 600;
             cursor: pointer;
             user-select: none;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.95rem;
         }
 
         summary::-webkit-details-marker {
@@ -112,9 +133,9 @@
 
         summary::after {
             content: '►';
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
-            transition: transform 0.2s;
+            transition: transform 0.2s ease;
         }
 
         details[open] summary::after {
@@ -126,13 +147,32 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             padding: 10px;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.25);
             border-top: 1px solid var(--border-color);
         }
 
         details div a {
             font-size: 0.85rem;
-            padding: 8px;
+            padding: 10px;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: var(--radius);
+            padding: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, color 0.2s;
+            margin-top: 4px;
+        }
+
+        .toggle-btn:hover, .toggle-btn:active {
+            background-color: var(--accent-color);
+            color: #ffffff;
         }
     </style>
 </head>
@@ -154,8 +194,8 @@
         <a href="https://pezzi.netlify.app" rel="noopener noreferrer" target="_blank">
             <b>➕ Pezzi +</b><span>Registro</span>
         </a>
-        <a href="https://rateoferie.netlify.app/" rel="noopener noreferrer" target="_blank">
-            <b>🌴 Ferie</b><span>Rateo</span>
+        <a href="https://shiftlog-clp.netlify.app/" rel="noopener noreferrer" target="_blank">
+            <b>📅 ShiftLog</b><span>Rateo</span>
         </a>
         <a href="https://clp2021.github.io/contapezzi/" rel="noopener noreferrer" target="_blank">
             <b>🔢 Contapezzi</b><span>Calcolatore</span>
@@ -169,20 +209,28 @@
             <b>⚓ Palermo</b><span>Arrivi</span>
         </a>
         <a href="https://www.vesselfinder.com/it/ports/ITPMO001" rel="noopener noreferrer" target="_blank">
-            <b><img src="https://www.vesselfinder.com/favicon.ico" class="vf-icon" alt="VF"> Palermo</b><span>Mappa / Rada</span>
+            <b>
+                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Palermo
+            </b>
+            <span>Mappa / Rada</span>
         </a>
         <a href="https://www.mnsw.gov.it/arrivals_departures/tables?port=ITTRI" rel="noopener noreferrer" target="_blank">
             <b>⚓ Termini</b><span>Arrivi</span>
         </a>
         <a href="https://www.vesselfinder.com/it/ports/ITTRI001" rel="noopener noreferrer" target="_blank">
-            <b><img src="https://www.vesselfinder.com/favicon.ico" class="vf-icon" alt="VF"> Termini</b><span>Mappa / Rada</span>
+            <b>
+                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Termini
+            </b>
+            <span>Mappa / Rada</span>
         </a>
     </div>
 
     <!-- COMPAGNIE -->
     <div class="section-title">Compagnie</div>
-    
-    <details>
+
+    <details class="company-details">
         <summary>🚢 Grimaldi Lines</summary>
         <div>
             <a href="https://www.vesselfinder.com/it/vessels/details/9198939" rel="noopener noreferrer" target="_blank">Europa Palace</a>
@@ -196,7 +244,7 @@
         </div>
     </details>
 
-    <details>
+    <details class="company-details">
         <summary>🚢 GNV</summary>
         <div>
             <a href="https://www.vesselfinder.com/it/?imo=9948592" rel="noopener noreferrer" target="_blank">Polaris</a>
@@ -215,7 +263,24 @@
             <a href="https://www.vesselfinder.com/it/?imo=8420842" rel="noopener noreferrer" target="_blank">Golden Carrier</a>
         </div>
     </details>
+
+    <button type="button" class="toggle-btn" id="toggleDetailsBtn">Mostra tutte le navi</button>
 </main>
+
+<script>
+    const toggleBtn = document.getElementById('toggleDetailsBtn');
+    const detailsElements = document.querySelectorAll('.company-details');
+
+    toggleBtn.addEventListener('click', () => {
+        const areAllOpen = Array.from(detailsElements).every(d => d.open);
+
+        detailsElements.forEach(d => {
+            d.open = !areAllOpen;
+        });
+
+        toggleBtn.textContent = areAllOpen ? 'Mostra tutte le navi' : 'Riduci tutte le navi';
+    });
+</script>
 
 </body>
 </html>
